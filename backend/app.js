@@ -2,32 +2,17 @@ const express = require('express');
 const app = express();
 
 const db = require('./models');
+// async function testConnection() {
+//     try {
+//       await db.sequelize.authenticate();
+//       console.log('Connection has been established successfully.');
+//     } catch (error) {
+//       console.error('Unable to connect to the database:', error);
+//     }
+//   }
 
-const { Restaurants } = require('./models');
+// testConnection();
 
-app.get('/select', (req, res) => {
-    res.send('select')
-})
-
-app.get('/insert', (req, res) => {
-    Restaurants.create({
-        name: 'Sushi Garden',
-        description: 'Japanese Restaurant',
-        address: '123 Main St',
-        city: 'New York',
-        state: 'NY'
-    }).catch(err => {
-        if (err) {
-        console.log(err);
-    }
-    })
-
-    res.send('insert')
-})
-
-app.get('/delete', (req, res) => {
-    res.send('delete')
-})
 db.sequelize.sync().then((req) => {
     console.log('Database connected');
     app.listen(3001, () => {
