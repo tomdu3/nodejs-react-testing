@@ -14,9 +14,7 @@ module.exports = {
     database: process.env.PGDATABASE,
     host: process.env.PGHOST,
     dialect: 'postgres',
-    dialectOptions: {
-      ssl: sslConfig,
-    }
+    dialectOptions: sslConfig,
   },
   test: {
     username: process.env.PGUSER,
